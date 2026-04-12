@@ -1,0 +1,277 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Government Disaster Relief Coordination System - Design System */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@700;900&display=swap');
+
+@layer base {
+  :root {
+    /* Government Navy Blue Theme */
+    --background: 210 25% 97%;
+    --foreground: 215 35% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 35% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 35% 15%;
+
+    /* Deep Navy - Government Authority */
+    --primary: 215 65% 20%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Light Navy for secondary elements */
+    --secondary: 215 40% 92%;
+    --secondary-foreground: 215 65% 20%;
+
+    --muted: 210 20% 94%;
+    --muted-foreground: 215 20% 45%;
+
+    /* Gold accent for authority */
+    --accent: 43 90% 50%;
+    --accent-foreground: 215 65% 15%;
+
+    /* Emergency Red */
+    --destructive: 0 75% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Emergency/Alert colors */
+    --emergency: 0 80% 55%;
+    --emergency-foreground: 0 0% 100%;
+
+    /* Success Green */
+    --success: 145 65% 35%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning Orange */
+    --warning: 30 95% 50%;
+    --warning-foreground: 215 35% 15%;
+
+    --border: 215 25% 88%;
+    --input: 215 25% 88%;
+    --ring: 215 65% 20%;
+
+    --radius: 0.5rem;
+
+    /* Government Seal Gold */
+    --seal-gold: 43 85% 55%;
+    --seal-gold-dark: 38 80% 40%;
+
+    /* Hero overlay */
+    --hero-overlay: 215 50% 15%;
+
+    --sidebar-background: 215 35% 12%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 43 90% 50%;
+    --sidebar-primary-foreground: 215 35% 12%;
+    --sidebar-accent: 215 40% 20%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 215 30% 25%;
+    --sidebar-ring: 43 90% 50%;
+  }
+
+  .dark {
+    --background: 215 35% 8%;
+    --foreground: 210 20% 95%;
+
+    --card: 215 35% 12%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 215 35% 12%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 43 90% 50%;
+    --primary-foreground: 215 35% 12%;
+
+    --secondary: 215 30% 18%;
+    --secondary-foreground: 210 20% 95%;
+
+    --muted: 215 30% 18%;
+    --muted-foreground: 215 20% 60%;
+
+    --accent: 43 90% 50%;
+    --accent-foreground: 215 35% 12%;
+
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 30% 22%;
+    --input: 215 30% 22%;
+    --ring: 43 90% 50%;
+
+    --sidebar-background: 215 40% 6%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 43 90% 50%;
+    --sidebar-primary-foreground: 215 35% 12%;
+    --sidebar-accent: 215 35% 15%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 215 30% 18%;
+    --sidebar-ring: 43 90% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', Georgia, serif;
+  }
+}
+
+@layer components {
+  /* Government styled button variants */
+  .btn-government {
+    @apply bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-md 
+           transition-all duration-200 hover:bg-primary/90 
+           shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+  }
+
+  .btn-emergency {
+    @apply bg-emergency text-emergency-foreground font-bold px-6 py-3 rounded-md 
+           transition-all duration-200 animate-pulse hover:animate-none
+           shadow-lg hover:shadow-xl;
+  }
+
+  .btn-outline-government {
+    @apply border-2 border-primary text-primary font-semibold px-6 py-3 rounded-md 
+           transition-all duration-200 hover:bg-primary hover:text-primary-foreground
+           shadow-sm hover:shadow-md;
+  }
+
+  /* Card styles */
+  .card-government {
+    @apply bg-card rounded-lg shadow-lg border border-border/50 
+           transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  .card-emergency {
+    @apply bg-card rounded-lg shadow-lg border-l-4 border-l-emergency border border-border/50;
+  }
+
+  /* Government seal styling */
+  .government-seal {
+    @apply w-12 h-12 rounded-full bg-gradient-to-br from-seal-gold to-seal-gold-dark
+           flex items-center justify-center shadow-lg;
+  }
+
+  /* Hero overlay gradient */
+  .hero-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--hero-overlay) / 0.85) 0%,
+      hsl(var(--hero-overlay) / 0.7) 50%,
+      hsl(var(--hero-overlay) / 0.6) 100%
+    );
+  }
+
+  /* Navigation styles */
+  .nav-link {
+    @apply text-primary-foreground/80 hover:text-primary-foreground font-medium 
+           transition-colors duration-200 relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  /* Input styling */
+  .input-government {
+    @apply w-full px-4 py-3 border border-border rounded-md 
+           focus:ring-2 focus:ring-primary focus:border-primary
+           transition-all duration-200 bg-background;
+  }
+
+  /* Status badges */
+  .badge-active {
+    @apply bg-success/20 text-success font-medium px-3 py-1 rounded-full text-sm;
+  }
+
+  .badge-pending {
+    @apply bg-warning/20 text-warning font-medium px-3 py-1 rounded-full text-sm;
+  }
+
+  .badge-urgent {
+    @apply bg-emergency/20 text-emergency font-medium px-3 py-1 rounded-full text-sm;
+  }
+}
+
+@layer utilities {
+  /* Text shadow for hero */
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Backdrop blur */
+  .backdrop-government {
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.5s ease-out forwards;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+/* Stagger animation delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
